@@ -13,8 +13,10 @@ public class Taller_01 {
     public static void mostrarMenu(){
 
         Scanner entrada = new Scanner(System.in);
+        int opcion;
+        boolean salir = false;
 
-        while (true){
+        do {
             System.out.println("""
                     ---Bienvenido al menu del programa---
                     
@@ -23,29 +25,33 @@ public class Taller_01 {
                         3. Encriptar una frase.
                         4. Desencriptar una frase.
                         5. Salir.
-                        
-                    Elija una opcion: """);
 
-            String opcion =  entrada.nextLine();
+                    Elija una opcion:""");
 
-            switch(opcion){
-                case "1": verificarRevezDerecho();
+            opcion =  entrada.nextInt();
+
+            switch(opcion) {
+                case 1:
+                    verificarRevezDerecho();
                     break;
-
-                case "2": contarVocales();
+                case 2:
+                    contarVocales();
                     break;
-
-                case "3": encriptarFrase();
+                case 3:
+                    encriptarFrase();
                     break;
-
-                case "4": desencriptarFrase();
+                case 4:
+                    desencriptarFrase();
                     break;
-
-                case "5": break;
-
+                case 5:
+                    salir = true;
+                    System.out.println("Saliendo del Programa...");
+                    break;
+                default:
+                    System.out.println("Opcion invalida. Intente nuevamente.");
             }
-
         }
+        while (!salir);
     }
 
     public static void verificarRevezDerecho(){
