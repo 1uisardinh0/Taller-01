@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Taller_01 {
@@ -55,7 +56,21 @@ public class Taller_01 {
     }
 
     public static void verificarRevezDerecho(){
-        System.out.println("Hola esto funciona");
+        Scanner entrada = new Scanner(System.in);
+        String frase =  entrada.nextLine().toLowerCase();
+        StringBuilder convertidor = new StringBuilder(frase);
+        String textoIvertido = convertidor.reverse().toString();
+
+        if (textoIvertido.equals(frase)){
+            System.out.println("La frase es Revéz-Derecho");
+            boolean revezDerecho = true;
+            contarVocales();
+        }
+        else{
+            boolean revezDerecho = false;
+            System.out.println("La frase no es Revez-Derecho");
+        }
+
     }
 
     public static void contarVocales(){
