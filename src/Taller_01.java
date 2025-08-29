@@ -11,13 +11,11 @@ public class Taller_01 {
         System.out.println("""
                 ---Bienvenido al menu del programa---
                 
-                elija una opcion:
+                Elija una opcion:
                     1. Verificar Revés-Derecho.
                     2. Contar vocales de una frase.
                     3. Encriptar una frase.
                     4. Desencriptar una frase.
                     5. Salir.""");
     }
-
-
 }
