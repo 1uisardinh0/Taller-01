@@ -1,4 +1,3 @@
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Taller_01 {
@@ -6,12 +5,8 @@ public class Taller_01 {
         menu();
     }
 
-    //Muestra las opciones del menu del programa.
+    //Muestras las opciones del programa y controla el flujo de este.
     public static void menu(){
-        mostrarMenu();
-    }
-
-    public static void mostrarMenu(){
 
         Scanner entrada = new Scanner(System.in);
         int opcion;
@@ -19,7 +14,7 @@ public class Taller_01 {
 
         do {
             System.out.println("""
-                    ---Bienvenido al menu del programa---
+                    Bienvenido al menu del programa
                     
                         1. Verificar Revés-Derecho.
                         2. Contar vocales de una frase.
@@ -32,49 +27,62 @@ public class Taller_01 {
             opcion =  entrada.nextInt();
 
             switch(opcion) {
-                case 1:
-                    verificarRevezDerecho();
-                    break;
-                case 2:
-                    contarVocales();
-                    break;
-                case 3:
-                    encriptarFrase();
-                    break;
-                case 4:
-                    desencriptarFrase();
-                    break;
-                case 5:
-                    salir = true;
-                    System.out.println("Saliendo del Programa...");
-                    break;
-                default:
-                    System.out.println("Opcion invalida. Intente nuevamente.");
+                case 1 -> verificarRevezDerecho();
+                case 2 -> contarVocales();
+                case 3 -> encriptarFrase();
+                case 4 -> desencriptarFrase();
+                case 5 -> salir = true;
+                default -> System.out.println("Opcion invalida. Intente nuevamente.");
             }
         }
         while (!salir);
+        System.out.println("Saliedo del programa. ");
+        entrada.close();
     }
 
+    //Metodo que nos permite verificar si una frase es revéz-derecho.
     public static void verificarRevezDerecho(){
         Scanner entrada = new Scanner(System.in);
-        String frase =  entrada.nextLine().toLowerCase();
+
+        System.out.println("Escriba su frase: ");
+        String frase = entrada.nextLine().toLowerCase().replaceAll("\\s", "");
         StringBuilder convertidor = new StringBuilder(frase);
         String textoIvertido = convertidor.reverse().toString();
 
         if (textoIvertido.equals(frase)){
             System.out.println("La frase es Revéz-Derecho");
-            boolean revezDerecho = true;
-            contarVocales();
         }
         else{
-            boolean revezDerecho = false;
             System.out.println("La frase no es Revez-Derecho");
         }
-
     }
 
+    //Metodo que permite contar las vocales de una frase.
     public static void contarVocales(){
-        System.out.println("Hola esto funciona");
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Escriba su frase: ");
+        String frase = entrada.nextLine().toLowerCase().replaceAll("\\s", "");
+        int contador = 0;
+
+        for (int i = 0; i < frase.length(); i++) {
+            if  (frase.charAt(i) == 'a'){
+                contador++;
+            }
+            else if  (frase.charAt(i) == 'e'){
+                contador++;
+            }
+            else if  (frase.charAt(i) == 'i'){
+                contador++;
+            }
+            else if  (frase.charAt(i) == 'o'){
+                contador++;
+            }
+            else if  (frase.charAt(i) == 'u'){
+                contador++;
+            }
+        }
+        System.out.println("La frase tiene: " +  contador + " Vocales");
     }
 
     public static void encriptarFrase(){
